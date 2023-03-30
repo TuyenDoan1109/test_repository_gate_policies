@@ -63,5 +63,26 @@ class CategorySeeder extends Seeder
             ],
 
         ]);
+
+        for ($i=1; $i <= 50; $i++) {
+            DB::table('categories')->insert([
+                [
+                    'name' => 'Category_' . $i,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            ]);
+        }
+
+        for ($i=51; $i <= 75; $i++) {
+            DB::table('categories')->insert([
+                [
+                    'name' => 'Category_' . $i,
+                    'deleted_at' => now(),
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            ]);
+        }
     }
 }

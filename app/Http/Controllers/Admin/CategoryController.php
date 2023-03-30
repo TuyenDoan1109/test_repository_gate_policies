@@ -21,6 +21,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // Example Only
+        // $categories = $this->categoryRepository->getFirstFiveCatgory();
+
         $categories = $this->categoryRepository->getAll();
         return view('admin.categories.index', compact('categories'));
     }
