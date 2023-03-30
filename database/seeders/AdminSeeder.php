@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Admin;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
@@ -106,6 +107,38 @@ class AdminSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+
         ]);
+
+        for ($i = 1; $i <= 50; $i++) {
+            if($i % 2 == 0) {
+                DB::table('admins')->insert([
+                    [
+                        'name' => 'Admin_' . $i,
+                        'email' => 'admin_' . $i .'@gmail.com',
+                        'email_verified_at' => now(),
+                        'password' => Hash::make('12345678'),
+                        'remember_token' => Str::random(10),
+                        'status' => '0',
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]
+                ]);
+            } else {
+                DB::table('admins')->insert([
+                    [
+                        'name' => 'Admin_' . $i,
+                        'email' => 'admin_' . $i .'@gmail.com',
+                        'email_verified_at' => now(),
+                        'password' => Hash::make('12345678'),
+                        'remember_token' => Str::random(10),
+                        'status' => '1',
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]
+                ]);
+            }
+
+        }
     }
 }
