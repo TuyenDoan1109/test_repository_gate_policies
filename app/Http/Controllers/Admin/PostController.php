@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Post\CreatePostRequest;
-use App\Http\Requests\Post\UpdatePostRequest;
+use App\Http\Requests\Web\Post\CreatePostRequest;
+use App\Http\Requests\Web\Post\UpdatePostRequest;
 use App\Repositories\Post\PostRepositoryInterface;
 
 class PostController extends Controller
@@ -21,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->getAll();
+        $posts = $this->postRepository->getAllWithPaginate();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -86,7 +86,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateCategoryRequest $request)
+    public function update($id, UpdatePostRequest $request)
     {
         $post = $this->postRepository->update($id, $request->all());
         if($post) {

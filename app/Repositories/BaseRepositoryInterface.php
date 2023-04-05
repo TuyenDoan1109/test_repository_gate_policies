@@ -5,6 +5,7 @@ namespace App\Repositories;
 interface BaseRepositoryInterface
 {
     public function getAll();
+    public function getAllWithPaginate();
     public function getAllWithDeleted();
     public function getOnlyDeleted();
     public function getById($id);

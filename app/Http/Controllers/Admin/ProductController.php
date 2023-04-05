@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\CreateProductRequest;
-use App\Http\Requests\Product\UpdateProductRequest;
+use App\Http\Requests\Web\Product\CreateProductRequest;
+use App\Http\Requests\Web\Product\UpdateProductRequest;
 use App\Repositories\Product\ProductRepositoryInterface;
 
 class ProductController extends Controller
@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->productRepository->getAll();
+        $products = $this->productRepository->getAllWithPaginate();
         return view('admin.products.index', compact('products'));
     }
 

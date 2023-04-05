@@ -40,6 +40,9 @@
 </nav>
 
 @yield('content')
+@php
+dump(session()->all());
+@endphp
 
 <!-- Footer -->
 <footer class="bg-dark text-center text-white">

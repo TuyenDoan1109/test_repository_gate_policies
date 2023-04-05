@@ -106,6 +106,16 @@
             </div>
         </div>
         <!-- END DATA TABLE -->
+
+        <div class="d-flex justify-content-between">
+            <div>
+                Showing {{$subcategories->firstItem()}} to {{$subcategories->lastItem()}} of {{$subcategories->total()}} entries
+            </div>
+            <div>
+                {{ $subcategories->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+
     </div>
 </div>
 {{--End Table--}}

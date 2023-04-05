@@ -5,6 +5,7 @@
 {{--Start Table--}}
 <div class="row">
     <div class="col">
+
         <!-- DATA TABLE -->
         <div class="card">
             <div class="card-header d-flex justify-content-between">
@@ -93,12 +94,24 @@
                             @endisset
                             </tbody>
                         </table>
+
+
                     </div>
                 </div>
 
             </div>
         </div>
         <!-- END DATA TABLE -->
+
+        <div class="d-flex justify-content-between">
+            <div>
+                Showing {{$posts->firstItem()}} to {{$posts->lastItem()}} of {{$posts->total()}} entries
+            </div>
+            <div>
+                {{ $posts->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+
     </div>
 </div>
 {{--End Table--}}

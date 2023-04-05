@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->enum('status', array_column(UserStatusEnum::cases(), 'value'))->default(UserStatusEnum::ACTIVE->value);     // can not insert value not in [0,1]
+            $table->enum('status', UserStatusEnum::getAllValues())->default(UserStatusEnum::ACTIVE->value);     // can not insert value not in [0,1]
             $table->softDeletes();    // add soft delete
             $table->timestamps();
         });

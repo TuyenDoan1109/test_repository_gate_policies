@@ -83,6 +83,10 @@
                             </p>
                         </div>
                     </div>
+
+                    @php
+                    dump(session()->all());
+                    @endphp
                 </div>
             </div>
         </div>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Permission\CreatePermissionRequest;
-use App\Http\Requests\Permission\UpdatePermissionRequest;
+use App\Http\Requests\Web\Permission\CreatePermissionRequest;
+use App\Http\Requests\Web\Permission\UpdatePermissionRequest;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 
 class PermissionController extends Controller
@@ -21,7 +21,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = $this->permissionRepository->getAll();
+        $permissions = $this->permissionRepository->getAllWithPaginate();
         return view('admin.permissions.index', compact('permissions'));
     }
 

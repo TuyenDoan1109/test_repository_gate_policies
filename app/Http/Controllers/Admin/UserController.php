@@ -3,12 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\Web\User\CreateuserRequest;
+use App\Http\Requests\Web\User\UpdateuserRequest;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
-    public function __construct() {
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository) {
         $this->middleware('auth:admin');
+        $this->userRepository = $userRepository;
     }
     /**
      * Display a listing of the resource.
@@ -17,7 +25,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = $this->userRepository->getAllWithPaginate();
+//        return $users;
+        return view('admin.users.index', compact('users'));
+    }
+
+    public function indexWithDeleted() {
+        $users = $this->userRepository->getAllWithDeleted();
+        return view('user.users.indexWithDeleted', compact('users'));
     }
 
     /**
@@ -27,7 +42,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -36,9 +51,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $data = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ];
+        $user = $this->userRepository->create($data);
+        if($user) {
+            return redirect(route('admin.users.index'))->with('alert-success', 'Thêm mới thành công');
+        } else {
+            return redirect()->back()->with('alert-error', 'Thêm mới thát bại');
+        }
     }
 
     /**
@@ -60,7 +85,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->userRepository->getById($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -70,9 +96,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, UpdateUserRequest $request)
     {
-        //
+        $data = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ];
+        $user = $this->userRepository->update($id, $data);
+        if($user) {
+            return redirect(route('admin.users.index'))->with('alert-success', 'Update thành công');
+        } else {
+            return redirect()->back()->with('alert-error', 'Update thất bại');
+        }
     }
 
     /**
@@ -83,6 +119,30 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->userRepository->delete($id);
+        if($user) {
+            return redirect(route('admin.users.index'))->with('alert-success', 'Delete thành công');
+        } else {
+            return redirect()->back()->with('alert-error', 'Delete thất bại');
+        }
     }
+
+    public function forceDelete($id) {
+        $user = $this->userRepository->deleteForever($id);
+        if($user) {
+            return redirect(route('admin.users.index'))->with('alert-success', 'Forever Delete thành công');
+        } else {
+            return redirect()->back()->with('alert-error', 'Forever Delete thất bại');
+        }
+    }
+
+    public function restore($id) {
+        $user = $this->userRepository->restoreDeleted($id);
+        if($user) {
+            return redirect(route('admin.users.index'))->with('alert-success', 'Delete thành công');
+        } else {
+            return redirect()->back()->with('alert-error', 'Delete thất bại');
+        }
+    }
+
 }

@@ -25,6 +25,8 @@ use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\Post\PostRepositoryInterface;
 use App\Repositories\Post\PostRepository;
 
+use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\User\UserRepository;
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -67,6 +69,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(
             PostRepositoryInterface::class,
             PostRepository::class
+        );
+
+        $this->app->singleton(
+            UserRepositoryInterface::class,
+            UserRepository::class
         );
     }
 

@@ -9,4 +9,9 @@ enum OrderStatusEnum:int
     case ON_DELIVERY = 3;
     case DELIVERED = 4;
     case CANCELED = 5;
+
+    public static function getAllValues(): array
+    {
+        return array_column(UserStatusEnum::cases(), 'value');
+    }
 }

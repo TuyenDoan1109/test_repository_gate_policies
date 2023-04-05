@@ -2,10 +2,15 @@
 
 namespace App\Exceptions;
 
+use App\Helper\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
 use Auth;
+
+
 
 class Handler extends ExceptionHandler
 {
@@ -58,4 +63,16 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+//    public function render($request, Throwable $e): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|array|\Symfony\Component\HttpFoundation\Response
+//    {
+//        $statusCode = 500;
+//        if (method_exists($e, 'getStatusCode')) {
+//            $statusCode = $e->getStatusCode();
+//        }
+//        if (!App::environment(['local']) && !$e instanceof ValidationException){
+//            return response()->json(Response::dataError($e->getMessage(), $statusCode));
+//        }
+//        return parent::render($request, $e);
+//    }
 }

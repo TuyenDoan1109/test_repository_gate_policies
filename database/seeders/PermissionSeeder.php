@@ -126,6 +126,28 @@ class PermissionSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+
+            // Nhóm quyền với User
+            [
+                'name' => 'user-view',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'user-add',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'user-edit',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'user-delete',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

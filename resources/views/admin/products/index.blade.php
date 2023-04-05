@@ -108,6 +108,16 @@
             </div>
         </div>
         <!-- END DATA TABLE -->
+
+        <div class="d-flex justify-content-between">
+            <div>
+                Showing {{$products->firstItem()}} to {{$products->lastItem()}} of {{$products->total()}} entries
+            </div>
+            <div>
+                {{ $products->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+
     </div>
 </div>
 {{--End Table--}}

@@ -106,6 +106,16 @@
             </div>
         </div>
         <!-- END DATA TABLE -->
+
+        <div class="d-flex justify-content-between">
+            <div>
+                Showing {{$permissions->firstItem()}} to {{$permissions->lastItem()}} of {{$permissions->total()}} entries
+            </div>
+            <div>
+                {{ $permissions->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+
     </div>
 </div>
 {{--End Table--}}

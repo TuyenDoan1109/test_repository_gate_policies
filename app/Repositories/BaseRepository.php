@@ -18,7 +18,12 @@ abstract class BaseRepository implements BaseRepositoryInterface
     }
 
     public function getAll() {
-        return $this->model->where('deleted_at', null)->get();
+        return $this->model->orderBy('id', 'desc')->get();
+    }
+
+    public function getAllWithPaginate()
+    {
+        return $this->model->orderBy('id', 'desc')->paginate(5);
     }
 
     public function getAllWithDeleted() {
@@ -41,7 +46,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function update($id, $attributes) {
         $result = $this->getById($id);
         if($result) {
-            return $result->update($attributes);
+            return $result->fill($attributes);
         }
         return false;
     }

@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Role\CreateRoleRequest;
-use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Http\Requests\Web\Role\CreateRoleRequest;
+use App\Http\Requests\Web\Role\UpdateRoleRequest;
 use App\Repositories\Role\RoleRepositoryInterface;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use Illuminate\Http\Request;
-
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -27,7 +24,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = $this->roleRepository->getAll();
+        $roles = $this->roleRepository->getAllWithPaginate();
         return view('admin.roles.index', compact('roles'));
     }
 

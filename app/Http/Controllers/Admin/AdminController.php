@@ -7,8 +7,8 @@ use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\CreateAdminRequest;
-use App\Http\Requests\Admin\UpdateAdminRequest;
+use App\Http\Requests\Web\Admin\CreateAdminRequest;
+use App\Http\Requests\Web\Admin\UpdateAdminRequest;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -30,7 +30,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = $this->adminRepository->getAll();
+        $admins = $this->adminRepository->getAllWithPaginate();
         return view('admin.admins.index', compact('admins'));
     }
 

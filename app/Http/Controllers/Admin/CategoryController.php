@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\CreateCategoryRequest;
-use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Requests\Web\Category\CreateCategoryRequest;
+use App\Http\Requests\Web\Category\UpdateCategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
@@ -24,7 +24,7 @@ class CategoryController extends Controller
         // Example Only
         // $categories = $this->categoryRepository->getFirstFiveCatgory();
 
-        $categories = $this->categoryRepository->getAll();
+        $categories = $this->categoryRepository->getAllWithPaginate();
         return view('admin.categories.index', compact('categories'));
     }
 

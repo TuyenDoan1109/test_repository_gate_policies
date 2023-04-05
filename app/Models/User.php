@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes; // add soft delete
-use App\Enums\StatusEnum;
 
 class User extends Authenticatable
 {
@@ -43,7 +42,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'status' => StatusEnum::class,
     ];
 
     public function info() {

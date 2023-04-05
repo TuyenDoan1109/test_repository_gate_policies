@@ -145,6 +145,16 @@
             </div>
         </div>
         <!-- END DATA TABLE -->
+
+        <div class="d-flex justify-content-between">
+            <div>
+                Showing {{$admins->firstItem()}} to {{$admins->lastItem()}} of {{$admins->total()}} entries
+            </div>
+            <div>
+                {{ $admins->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+
     </div>
 </div>
 {{--End Table--}}

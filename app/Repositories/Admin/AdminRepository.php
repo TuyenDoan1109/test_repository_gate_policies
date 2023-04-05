@@ -19,6 +19,13 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         return Admin::class;
     }
 
+    public function getAdminByEmail($email) {
+        $result = $this->model->where('email', $email)->first();
+        if($result) {
+            return $result;
+        }
+        return false;
+    }
 }
 
 

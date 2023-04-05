@@ -10,6 +10,12 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'admin_id',
+        'status',
+    ];
+
     public function admin() {
         return $this->belongsTo('App\Models\Admin');
     }

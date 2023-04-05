@@ -135,6 +135,32 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/posts-restore/{id}', [App\Http\Controllers\Admin\PostController::class, 'restore'])
         ->name('posts.restore');
 
+    // User
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])
+        ->name('users.index')
+        ->middleware('can:user-view');
+    Route::get('/users/create', [App\Http\Controllers\Admin\UserController::class, 'create'])
+        ->name('users.create')
+        ->middleware('can:user-add');
+    Route::post('/users', [App\Http\Controllers\Admin\UserController::class, 'store'])
+        ->name('users.store');
+    Route::get('/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'show'])
+        ->name('users.show');
+    Route::get('/users/{id}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])
+        ->name('users.edit')
+        ->middleware('can:user-edit,id');
+    Route::put('/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])
+        ->name('users.update');
+    Route::delete('/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])
+        ->name('users.destroy')
+        ->middleware('can:user-delete,id');
+    Route::get('/users-with-deleted', [App\Http\Controllers\Admin\UserController::class, 'indexWithDeleted'])
+        ->name('users.indexWithDeleted');
+    Route::post('/users-force-delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'forceDelete'])
+        ->name('users.forceDelete');
+    Route::get('/users-restore/{id}', [App\Http\Controllers\Admin\UserController::class, 'restore'])
+        ->name('users.restore');
+
     // Admin
 //    Route::resource('admins', App\Http\Controllers\Admin\AdminController::class);
     Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'index'])

@@ -9,6 +9,7 @@ use App\Policies\CategoryPolicy;
 use App\Policies\SubcategoryPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\PostPolicy;
+use App\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -64,5 +65,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('post-add', [PostPolicy::class, 'create']);
         Gate::define('post-edit', [PostPolicy::class, 'update']);
         Gate::define('post-delete', [PostPolicy::class, 'delete']);
+
+        // User
+        Gate::define('user-view', [UserPolicy::class, 'view']);
+        Gate::define('user-add', [UserPolicy::class, 'create']);
+        Gate::define('user-edit', [UserPolicy::class, 'update']);
+        Gate::define('user-delete', [UserPolicy::class, 'delete']);
     }
 }
