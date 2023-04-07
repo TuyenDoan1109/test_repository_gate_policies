@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Subcategory\CreateSubcategoryRequest;
-use App\Http\Requests\Web\Subcategory\UpdateSubcategoryRequest;
+use App\Http\Requests\Subcategory\CreateSubcategoryRequest;
+use App\Http\Requests\Subcategory\UpdateSubcategoryRequest;
 use App\Repositories\Subcategory\SubcategoryRepositoryInterface;
 
 class SubcategoryController extends Controller

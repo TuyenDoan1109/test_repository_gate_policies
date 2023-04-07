@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+
 use App\Policies\AdminPolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\SubcategoryPolicy;
@@ -30,10 +31,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
 //        Gate::define('admin-view', function ($admin) {
 ////            dd($user);
 //            return $admin->checkPermissionAccess('admin-view');
+//        });
+
+//        Gate::define('update-post', function ($user, $post) {
+//            return $user->id == $post->user_id;
 //        });
 
         // Admin

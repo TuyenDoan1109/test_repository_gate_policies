@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateAdminRequest;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\Repositories\Admin\AdminRepositoryInterface;
-use App\Repositories\Role\RoleRepositoryInterface;
 use App\Repositories\Permission\PermissionRepositoryInterface;
+use App\Repositories\Role\RoleRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Requests\Web\Admin\CreateAdminRequest;
-use App\Http\Requests\Web\Admin\UpdateAdminRequest;
 use Illuminate\Support\Facades\Hash;
 
 

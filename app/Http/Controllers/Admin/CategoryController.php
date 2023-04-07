@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Category\CreateCategoryRequest;
-use App\Http\Requests\Web\Category\UpdateCategoryRequest;
+use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
 
 class CategoryController extends Controller

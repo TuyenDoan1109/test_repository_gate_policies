@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Role\CreateRoleRequest;
-use App\Http\Requests\Web\Role\UpdateRoleRequest;
-use App\Repositories\Role\RoleRepositoryInterface;
+use App\Http\Requests\Role\CreateRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Repositories\Permission\PermissionRepositoryInterface;
+use App\Repositories\Role\RoleRepositoryInterface;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller

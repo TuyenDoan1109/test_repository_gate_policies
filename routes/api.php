@@ -31,26 +31,16 @@ Route::namespace('Api\v1')->prefix('v1')->group(function() {
         Route::post('/login', [LoginController::class, 'login']);
     });
 
-    // Post
-    Route::group(['prefix' => 'posts'], function () {
-        Route::get('/', [PostController::class, 'index']);
-        Route::post('/', [PostController::class, 'store']);
-        Route::get('/{id}', [PostController::class, 'show']);
-    });
-
     // Category
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', [CategoryController::class, 'index']);
         Route::post('/', [CategoryController::class, 'store']);
         Route::get('/{id}', [CategoryController::class, 'show']);
+        Route::put('/{id}', [CategoryController::class, 'update']);
+        Route::delete('/{id}', [CategoryController::class, 'destroy']);
     });
 
     // ======================== END PUBLIC ROUTE ==============================
-
-
-
-
-
 
 
 
@@ -64,14 +54,11 @@ Route::namespace('Api\v1')->prefix('v1')->group(function() {
 
         // Post
         Route::group(['prefix' => 'posts'], function () {
+            Route::get('/', [PostController::class, 'index']);
+            Route::post('/', [PostController::class, 'store']);
+            Route::get('/{id}', [PostController::class, 'show']);
             Route::put('/{id}', [PostController::class, 'update']);
-            Route::delete('/{id}', [PostController::class, 'destroy']);
-        });
-
-        // Category
-        Route::group(['prefix' => 'categories'], function () {
-            Route::put('/{id}', [CategoryController::class, 'update']);
-            Route::delete('/{id}', [CategoryController::class, 'destroy']);
+            Route::delete('/{id}', [PostController::class, 'destroy'])->middleware('can:post-delete,id');
         });
 
     });

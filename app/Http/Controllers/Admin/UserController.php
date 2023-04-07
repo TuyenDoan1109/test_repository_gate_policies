@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Repositories\User\UserRepositoryInterface;
-use Illuminate\Http\Request;
-use App\Http\Requests\Web\User\CreateuserRequest;
-use App\Http\Requests\Web\User\UpdateuserRequest;
 use Illuminate\Support\Facades\Hash;
 
 

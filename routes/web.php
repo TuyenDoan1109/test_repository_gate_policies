@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// BACKEND
+// ============================== BACKEND ========================
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])
         ->name('dashboard');
@@ -218,11 +218,12 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/permissions-restore/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'restore'])
         ->name('permissions.restore');
 });
+// ============================== END BACKEND ========================
 
 
 
 
-// FRONTEND
+// ============================== FRONTEND ========================
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])
     ->name('home');
 Route::namespace('Auth')->group(function () {
@@ -235,3 +236,4 @@ Route::namespace('Auth')->group(function () {
         ->name('register');
     Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 });
+// ============================== END FRONTEND ========================

@@ -60,8 +60,8 @@ class PostPolicy
      */
     public function update(Admin $admin, $id)
     {
-        $admin_id = $this->postRepository->getById($id)->admin_id;
-        if($admin->id == $admin_id && $admin->checkPermissionAccess('post-edit')) {
+        $admin_id = $this->postRepository->getById($id)->admin_id ?? null;
+        if(($admin->id == $admin_id && $admin->checkPermissionAccess('post-delete')) || $admin->id == 1) {
             return true;
         }
         return false;
@@ -76,8 +76,8 @@ class PostPolicy
      */
     public function delete(Admin $admin, $id)
     {
-        $admin_id = $this->postRepository->getById($id)->admin_id;
-        if($admin->id == $admin_id && $admin->checkPermissionAccess('post-delete')) {
+        $admin_id = $this->postRepository->getById($id)->admin_id ?? null;
+        if(($admin->id == $admin_id && $admin->checkPermissionAccess('post-delete')) || $admin->id == 1) {
             return true;
         }
         return false;

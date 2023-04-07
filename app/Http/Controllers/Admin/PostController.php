@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Post\CreatePostRequest;
-use App\Http\Requests\Web\Post\UpdatePostRequest;
+use App\Http\Requests\Post\CreatePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
 use App\Repositories\Post\PostRepositoryInterface;
 
 class PostController extends Controller

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Permission\CreatePermissionRequest;
-use App\Http\Requests\Web\Permission\UpdatePermissionRequest;
+use App\Http\Requests\Permission\CreatePermissionRequest;
+use App\Http\Requests\Permission\UpdatePermissionRequest;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 
 class PermissionController extends Controller
